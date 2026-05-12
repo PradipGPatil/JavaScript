@@ -56,13 +56,16 @@ const getWinner = (uChoice, cChoice = userDefaultChoice) => {
     }
 }
 
+//second argument is callbackfunction here
+// we are passing the pointer it call for you by somepoing in future 
 btn.addEventListener('click', () => {
     // avoid if user click multiple time the button
     if (isgameRunning) {
         return;
     }
     isgameRunning = true;
-    const user = getUserChoice(); // here we will get undefined
+    const user = getUserChoice(); // here we will get undefined becuase in getUserChoice function we did return anything
+                                    // user do not select anything
     const computor = getComputorChoice();
     let result;
     if (user) {
@@ -79,10 +82,14 @@ btn.addEventListener('click', () => {
 });
 
 // REST argument not related to game
+// rest argment is useful when we do not know in advance how many parameter migh be passed 
+// we are calling ourself then in that case we know but consider scenario where someone other calling this function
 
+// rest argument must be last parameter because we added first it will 
+// consume all parameter
 const combine = (resultHandler, operation, ...numbers) => {
 
-    // created function inside function which has scopt ot local function only
+    // created function inside function which has scope to local function only
     const validInput = (number) => {
         return isNaN(number) ? 0 : number;
     }
